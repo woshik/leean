@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {% if settings.favicon != blank %}
+        <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {% endif %}
+
     <title>{{ page_title }}</title>
 
     {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}">
+        <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    {{ 'bootstrap.min.css' | asset_url }}
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+
+    <script src="{{ 'bootstrap.bundle.min.js' | asset_url }}" defer></script>
 
     {{ content_for_header }}
 </head>
