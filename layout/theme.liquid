@@ -17,13 +17,23 @@
         <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
-
-    <script src="{{ 'bootstrap.bundle.min.js' | asset_url }}" defer></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    
     {{ content_for_header }}
 </head>
 <body>
+    {% section 'top-header' %}
+
+    {% section 'header-menu' %}
+
     {{ content_for_layout }}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    {{ 'script.js' | asset_url | | script_tag }}
 </body>
 </html>
