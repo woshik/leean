@@ -1433,3 +1433,12 @@ p.with-icons i {
   font-size: 13px;
   padding: 10px;
 }
+
+.announcement-bar {
+  background-color: #000;
+  text-align: center;
+}
+
+.announcement-bar .message {
+  color: #fff;
+}
