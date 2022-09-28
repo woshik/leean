@@ -1,9 +1,12 @@
 {
   "name": "page",
   "sections": {
+    "page-header": {
+      "type": "page-header"
+    },
     "main": {
       "type": "main-page"
     }
   },
-  "order": ["main"]
+  "order": ["page-header", "main"]
 }

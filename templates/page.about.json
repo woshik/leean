@@ -1,0 +1,11 @@
+{
+    "name": "about-us",
+    "sections": {
+        "page-header": {
+            "type": "page-header"
+        }
+    },
+    "order": [
+        "page-header"
+    ]
+}
