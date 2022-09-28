@@ -1,10 +1,15 @@
-<div class="announcement-bar">
-    <a class="link">
-        <p class="message">
-            Free Sell
-        </p>
-    </a>
-</div>
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when "announcement" %}
+            <div class="announcement-bar">
+                <a class="link">
+                    <p class="message mb-0">
+                        {{ block.settings.announcement-bar }}
+                    </p>
+                </a>
+            </div>
+    {% endcase %}
+{%endfor%}
 
 {% schema %}
 {
@@ -14,9 +19,22 @@
         {
             "type": "announcement",
             "name": "Announcement Bar",
-            "setting": []
+            "settings": [
+                {
+                   "type": "text",
+                   "id": "announcement-bar",
+                   "label": "Announcement Text",
+                   "default": "Free Shipping"
+                }
+            ]
         }
-   ]
-
+   ],
+  "default": {
+    "blocks": [
+        {
+            "type": "announcement"
+        }
+    ]
+  }
 }
 {% endschema %}
