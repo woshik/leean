@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      {% if section.settings.image == blank %}
+        {{ 'image' | placeholder_svg_tag }}
+      {% else %}
+        {{ section.settings.image | image_url: width: 1500 | image_tag: widths: '165, 360, 535, 750, 1070, 1500', loading: 'lazy', class: 'full-image' }}
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'heading' %}
+            <h2>{{ block.settings.heading }}</h2>
+          {% when 'content' %}
+            {{ block.settings.content }}
+          {% when 'button' %}
+            <a href="{{ block.settings.button_link }}" class="btn btn-main">{{ block.settings.button_label }}</a>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Image with text",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Select a image"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Heading",
+      "type": "heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Content Heading",
+          "default": "Content Heading"
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "type": "content",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam qui vel cupiditate exercitationem, ea fuga est velit nulla culpa modi quis iste tempora non, suscipit repellendus labore voluptatem dicta amet?</p>"
+        }
+      ]
+    },
+    {
+      "name": "Button",
+      "type": "button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "content"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
