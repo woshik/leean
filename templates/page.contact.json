@@ -1,11 +1,12 @@
 {
-    "name": "contact-us",
-    "sections": {
-        "page-header": {
-            "type": "page-header"
-        }
+  "name": "contact-us",
+  "sections": {
+    "page-header": {
+      "type": "page-header"
     },
-    "order": [
-        "page-header"
-    ]
+    "contact-form": {
+      "type": "contact-form"
+    }
+  },
+  "order": ["page-header", "contact-form"]
 }
