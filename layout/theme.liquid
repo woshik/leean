@@ -36,6 +36,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     
-    {{ 'script.js' | asset_url | | script_tag }}
+    {{ 'script.js' | asset_url | script_tag }}
 </body>
-</html>
+</html>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ 'script.js' | asset_url | | script_tag }}"
+  to: "{{ 'script.js' | asset_url | script_tag }}"
+  position: 1383..1425
+{%- endcomment -%}
